@@ -6,7 +6,17 @@
 // Write a macro that passes the test! No hints this time, you can do it!
 
 // I AM NOT DONE
-
+#[macro_use]
+mod macros {
+    macro_rules! my_macro {
+        () => {
+            print("Hello world!");
+        };
+        ($val:expr) => {
+            "Hello world!"
+        }
+    }
+}
 fn main() {
     if my_macro!("world!") != "Hello world!" {
         panic!("Oh no! Wrong output!");

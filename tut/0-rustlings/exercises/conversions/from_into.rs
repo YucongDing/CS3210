@@ -34,6 +34,18 @@ impl Default for Person {
 // Otherwise, return an instantiated Person onject with the results
 impl From<&str> for Person {
     fn from(s: &str) -> Person {
+        if s.len() == 0 {
+           return Person::default();
+        }
+
+        let v = s.split(',').collect::<Vec<&str>>();
+        if v.len() != 2 {
+            return Person::default();
+        }
+        Person {
+            name: String::from(v[0]),
+            age: v[1].parse::<usize>().unwrap(),
+        }
     }
 }
 

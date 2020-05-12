@@ -3,10 +3,10 @@
 // I AM NOT DONE
 
 // Do not modify the inner type &'a T.
-struct RefWrapper<T>(&'a T);
+struct RefWrapper<'a, T: 'a>(&'a T);
 
-impl RefWrapper {
-    fn inner(&self) -> &T {
+impl<'a, T> RefWrapper<'a, T> {
+    fn inner(&self) -> &'a T {
         self.0
     }
 }

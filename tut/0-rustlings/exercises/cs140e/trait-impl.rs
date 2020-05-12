@@ -10,6 +10,21 @@ enum Duration {
 }
 
 // What traits does `Duration` need to implement?
+impl PartialEq for Duration {
+    fn eq(&self, other: &Duration) -> bool {
+        let left: u64 = match self {
+            &Duration::MilliSeconds(ms) => ms,
+            &Duration::Seconds(s) => s as u64 * 1000,
+            &Duration::Minutes(min) => min as u64 * 1000 * 60,
+        };
+        let right: u64 = match self {
+            &Duration::MilliSeconds(ms) => ms,
+            &Duration::Seconds(s) => s as u64 * 1000,
+            &Duration::Minutes(min) => min as u64 * 1000 * 60,
+        };
+        left == right
+    }
+}
 
 #[test]
 fn traits() {

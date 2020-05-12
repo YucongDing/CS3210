@@ -12,6 +12,7 @@ mod a {
 
     impl MyTrait for MyType {}
 }
+use a::MyTrait;
 
 // Do not modify this function.
 fn main() {

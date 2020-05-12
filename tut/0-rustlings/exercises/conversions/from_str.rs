@@ -21,6 +21,25 @@ struct Person {
 impl FromStr for Person {
     type Err = String;
     fn from_str(s: &str) -> Result<Person, Self::Err> {
+        if s.len() == 0 {
+            return Err(String::from("Empty String."));
+        }
+        
+        let v = s.split(",").collect::<Vec<&str>>();
+        
+        if v.len() != 2 {
+            return Err(String::from("String is incomplete."));
+        }
+
+        match v[1].parse::<usize>() {
+            Ok(age) => Ok(
+                Person {
+                    name: String::from(v[0]),
+                    age: age,
+                }
+            ),
+            Err(_) => Err(String::from("Failed to parse age."))
+        }
     }
 }
 

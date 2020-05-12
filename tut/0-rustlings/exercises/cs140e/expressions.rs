@@ -9,6 +9,13 @@ struct IntWrapper(isize);
 
 // Implement a generic function here
 // fn max...
+fn max<T: PartialOrd>(a: T, b: T) -> T {
+    if a > b {
+        a
+    } else {
+        b
+    }
+}
 
 #[test]
 fn expressions() {

@@ -9,13 +9,37 @@ struct Builder {
 }
 
 impl Builder {
+    fn default() -> Builder {
+        Builder {
+            string: None,
+            number: None
+        }
+    }
     // fn string(...
+        fn string<T: Into<String>>(&mut self, s:T) -> &mut Self {
+            self.string = Some(s.into());
+            self
+        }
 
     // fn number(...
+        fn number(&mut self, num:usize) -> &mut Self {
+            self.number = Some(num);
+            self
+        }
 }
 
 impl ToString for Builder {
     // Implement the trait
+    fn to_string(&self) -> String{
+        [
+            &self.string,
+            &self.number.map(|x| x.to_string()),
+        ].iter()
+            .filter(|x| x.is_some())
+            .map(|&x| x.clone().unwrap())
+            .collect::<Vec<String>>()
+            .join(" ")
+    }
 }
 
 // Do not modify this function.

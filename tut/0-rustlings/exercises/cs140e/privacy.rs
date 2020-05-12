@@ -3,10 +3,11 @@
 // I AM NOT DONE
 
 mod a {
-    fn f() {}
+    pub fn f() {}
 }
 
 // Do not modify this function.
 fn main() {
+
     a::f();
 }

@@ -3,6 +3,7 @@
 // I AM NOT DONE
 
 // What traits does this struct need to derive?
+#[derive(Clone, Copy)]
 struct MyType(usize);
 
 // Do not modify this function.

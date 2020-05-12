@@ -3,6 +3,6 @@
 // I AM NOT DONE
 
 pub fn main() {
-    let x = 10;
+    let x: &mut i32 = &mut 10;
     *x = 20;
 }
